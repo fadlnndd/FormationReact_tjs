@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './Button.module.css'
 import PropTypes from 'prop-types'
 
 function Button(props) {
     console.log(props);
     const [isClicked, setIsClicked] = useState({clickedState:false,info2:'coucou'})
+    useEffect(() => {
+      // la valeur a changer
+      if (isClicked.clickState) {
+        setTimeout(() => {
+          setIsClicked({ ...isClicked, clickedState: false});
+        }, 250);        
+      }
+    }, [isClicked])
     return (
       <button
         onClick={(evt) => {
         //   console.log(evt);
-          props.onButtonClicked();
+          setIsClicked({ ...isClicked, clickedState: true});
+          if (props.onButtonClicked !== undefined) {
+            props.onButtonClicked();
+          }
         }}
         type={props.type}
         className={styles.Button + (isClicked.clickedState ? ' ' + styles.clicked : '' )}
