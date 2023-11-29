@@ -4,7 +4,19 @@ import PropTypes from 'prop-types'
 
 function Button(props) {
     console.log(props);
-    return <button type={props.type} className={styles.Button} style={{backgroundColor: props.bgColor}}>{props.text}</button>
+    return (
+      <button
+        onClick={(evt) => {
+          console.log(evt);
+          props.onButtonClicked();
+        }}
+        type={props.type}
+        className={styles.Button}
+        style={{ backgroundColor: props.bgColor }}
+      >
+        {props.text}
+      </button>
+    );
 }
 Button.propTypes={
     text: PropTypes.string.isRequired,
