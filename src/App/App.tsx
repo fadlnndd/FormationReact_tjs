@@ -8,13 +8,14 @@ function App() {
       <hr />
       <Button text="toto" type="reset"/>
       <Button text="tata" type="submit"/>
-      <Button text="titi" 
+      <Button bgColor="tomato"
+        text="titi" 
         size={{
           margin:{bottom:'12px', right: '24px'}, 
           padding: { h: "20px", w: "40px"}
         }} 
       />
-      <Button text="tutu" type="button"/>
+      <Button bgColor="skyblue" text="tutu" type="button"/>
     </div>
   );
 }

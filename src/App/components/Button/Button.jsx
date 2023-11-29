@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 
 function Button(props) {
     console.log(props);
-    return <button type={props.type} className={styles.Button}>{props.text}</button>
+    return <button type={props.type} className={styles.Button} style={{backgroundColor: props.bgColor}}>{props.text}</button>
 }
 Button.propTypes={
     text: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['submit','rest','button']),
+    type: PropTypes.oneOf(['submit','reset','button']),
     size: PropTypes.shape({
       
         margin: PropTypes.shape({
@@ -19,7 +19,8 @@ Button.propTypes={
           h: PropTypes.string,
           w: PropTypes.string
         })
-    })
+    }),
+    bgColor: PropTypes.string
 }
 
 Button.defaultProps={
