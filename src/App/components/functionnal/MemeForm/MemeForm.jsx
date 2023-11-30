@@ -3,31 +3,31 @@ import PropTypes from "prop-types";
 import styles from "./MemeForm.module.css";
 import Button from "../../uis/Button/Button";
 
+let initialMeme = {};
 const MemeForm = (props) => {
-  const [state, setState] = useState(props.meme);
+  // const [state, setState] = useState(props.meme);
   useEffect(() => {
-    setState(props.meme);
-  }, [props]);
+    initialMeme = props.meme;
+  }, []);
   const manageStringChangeEvent = (evt) => {
-    let newState = { ...state };
-    newState[evt.target.name] = evt.target.value;
-    setState(newState);
+    let newMeme = { ...props.meme };
+    newMeme[evt.target.name] = evt.target.value;
+    props.onMemeChange(newMeme);
   };
   const manageNumberChangeEvent = (evt) => {
-    let newState = { ...state };
-    newState[evt.target.name] = Number(evt.target.value);
-    setState(newState);
+    let newMeme = { ...props.meme };
+    newMeme[evt.target.name] = Number(evt.target.value);
+    props.onMemeChange(newMeme);
   };
   return (
     <div className={styles.MemeForm} data-testid="MemeForm">
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
-          props.onMemeChange(state);
         }}
         onReset={(evt) => {
           evt.preventDefault();
-          setState(props.meme);
+          props.onMemeChange(initialMeme);
         }}
       >
         <label htmlFor="titre">
@@ -37,7 +37,7 @@ const MemeForm = (props) => {
         <input
           name="titre"
           id="titre"
-          value={state.titre}
+          value={props.meme.titre}
           onChange={manageStringChangeEvent}
         />
         <hr />
@@ -60,7 +60,7 @@ const MemeForm = (props) => {
           name="text"
           id="text"
           type="text"
-          value={state.text}
+          value={props.meme.text}
           onChange={manageStringChangeEvent}
         />
         <br />
@@ -72,7 +72,7 @@ const MemeForm = (props) => {
           name="x"
           id="x"
           type="number"
-          value={state.x}
+          value={props.meme.x}
           onChange={manageNumberChangeEvent}
         />
         <label htmlFor="y">
@@ -83,7 +83,7 @@ const MemeForm = (props) => {
           name="y"
           id="y"
           type="number"
-          value={state.y}
+          value={props.meme.y}
           onChange={manageNumberChangeEvent}
         />
         <hr />
@@ -96,7 +96,7 @@ const MemeForm = (props) => {
           name="color"
           id="color"
           type="color"
-          value={state.color}
+          value={props.meme.color}
           onChange={manageStringChangeEvent}
         />
         <br />
@@ -109,7 +109,7 @@ const MemeForm = (props) => {
           id="fontSize"
           type="number"
           min="0"
-          value={state.fontSize}
+          value={props.meme.fontSize}
           onChange={manageNumberChangeEvent}
         />
         px
@@ -125,7 +125,7 @@ const MemeForm = (props) => {
           min="100"
           step="100"
           max="900"
-          value={state.fontWeight}
+          value={props.meme.fontWeight}
           onChange={manageStringChangeEvent}
         />
         <br />
@@ -133,9 +133,9 @@ const MemeForm = (props) => {
           name="underline"
           id="underline"
           type="checkbox"
-          checked={state.underline}
+          checked={props.meme.underline}
           onChange={(evt) => {
-            setState({ ...state, underline: evt.target.checked });
+            props.onMemeChange({ ...props.meme, underline: evt.target.checked });
           }}
         />
         &nbsp;
@@ -151,9 +151,9 @@ const MemeForm = (props) => {
           name="italic"
           id="italic"
           type="checkbox"
-          checked={state.italic}
+          checked={props.meme.italic}
           onChange={(evt) => {
-            setState({ ...state, italic: evt.target.checked });
+            props.onMemeChange({ ...props.meme, italic: evt.target.checked });
           }}
         />
         <hr />
@@ -167,7 +167,7 @@ const MemeForm = (props) => {
           id="frameSizeX"
           type="number"
           min="0"
-          value={state.frameSizeX}
+          value={props.meme.frameSizeX}
           onChange={manageNumberChangeEvent}
         />
         px{" "}
@@ -180,7 +180,7 @@ const MemeForm = (props) => {
           id="frameSizeY"
           type="number"
           min="0"
-          value={state.frameSizeY}
+          value={props.meme.frameSizeY}
           onChange={manageNumberChangeEvent}
         />
         px
