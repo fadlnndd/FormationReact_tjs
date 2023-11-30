@@ -12,7 +12,7 @@ const MemeForm = props => {
     };
   }, [state])
   return (
-    <div className={styles.MemeForm} data-testid="MemeForm">component memeForm</div>
+    <div className={styles.MemeForm} data-testid="MemeForm" >component memeForm</div>
   )
 }
 
