@@ -27,7 +27,7 @@ const MemeForm = (props) => {
         }}
         onReset={(evt) => {
           evt.preventDefault();
-          props.onMemeChange(props.meme);
+          setState(props.meme);
         }}
       >
         <label htmlFor="titre">
