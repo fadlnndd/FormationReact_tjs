@@ -1,35 +1,25 @@
 import React from "react";
-import "./App.css";
-import Button from "./components/Button/Button";
+import Footer from "./components/uis/Footer/Footer";
+import Header from "./components/uis/Header/Header";
+import Navbar from "./components/uis/Navbar/Navbar";
+import FlexHGrow3 from "./components/layouts/FlexHGrow3/FlexHGrow3";
+import FlexWGrow1 from "./components/layouts/FlexWGrow1/FlexWGrow1";
+import MemeSvgViewer from "./components/uis/MemeSvgViewer/MemeSvgViewer";
+import MemeForm from "./components/functionnal/MemeForm/MemeForm";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { counter: 0 };
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log("state", prevState, this.state);
-  }
-
-  render() {
-    return (
-      <div className="App">
-        valeur {this.state.counter}
-        <hr />
-        <Button
-          text="ajouter 1"
-          type="button"
-          onButtonClicked={() => {
-            // alert('le button est clicked');
-            this.setState({ counter: this.state.counter + 1 });
-            // console.log(this.state.counter);
-          }}
-        />
-        <Button text="enlever 1" type="button" />
-      </div>
-    );
-  }
-}
-
+const App = () => {
+  return (
+    <div className="App">
+      <FlexHGrow3 style={{height: 'calc(100vh - 30px)'}}>
+        <Header />
+        <Navbar />
+        <FlexWGrow1>
+          <MemeSvgViewer />
+          <MemeForm />
+        </FlexWGrow1>
+        <Footer />
+      </FlexHGrow3>
+    </div>
+  );
+};
 export default App;
