@@ -11,13 +11,15 @@ import {emptyMeme} from 'orsys-tjs-meme'
 const App = () => {
   const [current, setCurrent] = useState(emptyMeme)
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <FlexHGrow3 style={{height: 'calc(100vh - 30px)'}}>
         <Header />
         <Navbar />
         <FlexWGrow1>
           <MemeSvgViewer meme={current} />
-          <MemeForm meme={current} />
+          <MemeForm meme={current} onMemeChange={ meme => {
+            setCurrent(meme)
+          }}/>
         </FlexWGrow1>
         <Footer />
       </FlexHGrow3>

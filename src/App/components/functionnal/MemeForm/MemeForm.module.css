@@ -1,1 +1,12 @@
-.MemeForm {}
+.MemeForm {
+    text-align: center;
+}
+.smallNumber{
+    width: 50px;
+}
+.inline{display: inline;}
+
+.flexCols2 {
+    display: flex;
+    justify-content: space-between;
+}

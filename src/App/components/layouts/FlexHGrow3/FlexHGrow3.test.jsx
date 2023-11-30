@@ -5,7 +5,7 @@ import FlexHGrow3 from './FlexHGrow3';
 
 describe('<FlexHGrow3 />', () => {
   test('it should mount', () => {
-    render(<FlexHGrow3 />);
+    render(<FlexHGrow3><div></div></FlexHGrow3>);
     
     const flexHGrow3 = screen.getByTestId('FlexHGrow3');
 

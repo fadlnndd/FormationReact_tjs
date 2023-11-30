@@ -31,12 +31,12 @@ function Button(props) {
       }
       style={{ backgroundColor: props.bgColor }}
     >
-      {props.text}
+      {props.children}
     </button>
   );
 }
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  children: PropTypes.string.isRequired,
   type: PropTypes.oneOf(["submit", "reset", "button"]),
   size: PropTypes.shape({
     margin: PropTypes.shape({

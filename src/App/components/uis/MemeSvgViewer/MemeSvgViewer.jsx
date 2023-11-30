@@ -25,7 +25,7 @@ const MemeSvgViewer = (props) => {
 };
 
 MemeSvgViewer.propTypes = {
-  
+  meme: PropTypes.object.isRequired
 };
 MemeSvgViewer.defaultProps = {};
 
