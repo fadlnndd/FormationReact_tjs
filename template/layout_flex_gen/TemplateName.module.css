@@ -1,0 +1,7 @@
+.TemplateName {
+    display: flex;
+    flex-direction: column;
+}
+.TemplateName>*:first-child{
+    flex-grow: 1;
+}

@@ -10,7 +10,24 @@
       "withStyle": true,
       "withTest": true,
       "withStory": true,
-      "withLazy": true
+      "withLazy": true,
+      "customTemplates": {
+        "component":"template/generic_function/TemplateName.jsx"
+      }
+    },
+    "layout": {
+      "path": "src/App/components/layouts",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": true,
+      "withLazy": true,
+      "customTemplates": {
+        "component":"template/layout_flex_gen/TemplateName.jsx",
+        "style":"template/layout_flex_gen/TemplateName.module.css",
+        "test":"template/layout_flex_gen/TemplateName.test.jsx",
+        "story":"template/layout_flex_gen/TemplateName.stories.jsx",
+        "lazy":"template/readme.md"
+      }
     }
   }
 }
