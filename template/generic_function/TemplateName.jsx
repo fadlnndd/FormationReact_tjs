@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import styles from 'TemplateName.module.css'
+import styles from './TemplateName.module.css'
 
 const TemplateNameInitialState = {}
 const TemplateName = props => {
@@ -12,7 +12,7 @@ const TemplateName = props => {
     };
   }, [state])
   return (
-    <div data-testid="TemplateName">component templateName</div>
+    <div className={styles.TemplateName} data-testid="TemplateName">component templateName</div>
   )
 }
 
