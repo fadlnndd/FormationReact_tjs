@@ -45,11 +45,11 @@ const MemeForm = (props) => {
           <h2>Image</h2>
         </label>
         <br />
-        <select name="image" id="image">
-          <option value="1">futurama1.jpg</option>
-          <option value="2">futurama2.png</option>
-          <option value="3">futurama3.png</option>
-          <option value="4">gwenadu.jpg</option>
+        <select name="imageId" id="imageId" value={props.meme.imageId} onChange={manageStringChangeEvent}>
+          <option value="-1"></option>
+          {props.images.map((img, position) => 
+            <option key={position} value={img.id}>{img.titre}</option>
+          )}
         </select>
         <hr />
         <label htmlFor="text">
@@ -185,6 +185,7 @@ const MemeForm = (props) => {
         />
         px
         <br />
+        <hr />
         <div className={styles.flexCols2}>
           <Button type="reset" bgColor="tomato">
             Cancel
@@ -199,8 +200,9 @@ const MemeForm = (props) => {
 };
 
 MemeForm.propTypes = {
-  meme: PropTypes.object.isRequired,
+  meme: PropTypes.object.isRequired, // shape todo
   onMemeChange: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
 };
 MemeForm.defaultProps = {};
 
