@@ -9,6 +9,9 @@ import MemeSvgViewer from "./components/uis/MemeSvgViewer/MemeSvgViewer.stored";
 import { MemeFormHookConnected } from "./components/functionnal/MemeForm/MemeForm";
 import {emptyMeme} from 'orsys-tjs-meme'
 import { RESSOURCES_NAME, REST_ADDR } from "./config/config";
+import { Routes, Route } from 'react-router-dom'
+import Editor from "./pages/Editor";
+
 // import { store } from "./store/store";
 
 const App = () => {
@@ -22,11 +25,11 @@ const App = () => {
       <FlexHGrow3 style={{height: 'calc(100vh - 30px)'}}>
         <Header />
         <Navbar />
-        <FlexWGrow1>
-          {/* <MemeSvgViewer meme={current} image={images.find(img => img.id === current.imageId)}/> */}
-          <MemeSvgViewer/>
-          <MemeFormHookConnected/>
-        </FlexWGrow1>
+        <Routes>
+          <Route path="/" element={<div>Hello Meme Generator ...</div>}></Route>
+          <Route path="/new" element={<Editor />}></Route>
+          <Route path="/editor/:id" element={<Editor />}></Route>
+        </Routes>
         <Footer />
       </FlexHGrow3>
     </div>
