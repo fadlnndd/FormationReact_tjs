@@ -11,6 +11,7 @@ import {emptyMeme} from 'orsys-tjs-meme'
 import { RESSOURCES_NAME, REST_ADDR } from "./config/config";
 import { Routes, Route } from 'react-router-dom'
 import Editor from "./pages/Editor";
+import Thumbnail from "./pages/Thumbnail";
 
 // import { store } from "./store/store";
 
@@ -27,6 +28,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<div>Hello Meme Generator ...</div>}></Route>
+          <Route path="/thumbnail" element={<Thumbnail />}></Route>
           <Route path="/new" element={<Editor />}></Route>
           <Route path="/editor/:id" element={<Editor />}></Route>
         </Routes>

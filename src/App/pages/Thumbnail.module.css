@@ -1,0 +1,8 @@
+.Thumbnail{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.Thumbnail>div{
+    height: 100px; width: 100px;
+}
