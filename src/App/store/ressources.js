@@ -14,7 +14,10 @@ const ressources = createSlice({
     fillImages:(state, action) => {
         state.images.splice(0);
         state.images.push(...action.payload)
-    }
+    },
+    pushImage:(state, action) => {
+        state.images.push(action.payload)
+    },
   },
   extraReducers: {}
 });

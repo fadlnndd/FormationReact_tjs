@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./MemeForm.module.css";
 import Button from "../../uis/Button/Button";
+import { useSelector, useDispatch } from 'react-redux'
+import { update } from "../../../store/current";
 
 let initialMeme = {};
 const MemeForm = (props) => {
@@ -211,20 +213,21 @@ const MemeForm = (props) => {
 
 MemeForm.propTypes = {
   meme: PropTypes.object.isRequired, // shape todo
-  // meme: PropTypes.shape({}).isRequired, // shape todo
-  // id?: number;
-  // titre: string;
-  // text: string;
-  // x: number;
-  // y: number;
-  // fontWeight: string;
-  // fontSize: number;
-  // underline: boolean;
-  // italic: boolean;
-  // imageId: number;
-  // color: string;
-  // frameSizeX: number;
-  // frameSizeY: number;
+  // meme: PropTypes.shape({
+  //   id: PropTypes.number,
+  //   titre: PropTypes.string,
+  //   text: PropTypes.string,
+  //   x: PropTypes.number,
+  //   y: PropTypes.number,
+  //   fontWeight: PropTypes.string,
+  //   fontSize: PropTypes.number,
+  //   underline: PropTypes.bool,
+  //   italic: PropTypes.bool,
+  //   imageId: PropTypes.number,
+  //   color: PropTypes.string,
+  //   frameSizeX: PropTypes.number,
+  //   frameSizeY: PropTypes.number,
+  // }).isRequired, // shape todo
   onMemeChange: PropTypes.func.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -238,3 +241,17 @@ MemeForm.propTypes = {
 MemeForm.defaultProps = {};
 
 export default MemeForm;
+
+export const MemeFormHookConnected = (props) => {
+  const images = useSelector((s)=> s.ressources.images);
+  const current = useSelector((s)=> s.current);
+  const dispatch = useDispatch();
+  return (
+    <MemeForm 
+    { ...props}
+    images={images}
+    meme={current}
+    onMemeChange={(meme) => dispatch(update(meme))}
+    />
+  );
+};

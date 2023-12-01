@@ -1,8 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import ressourceReducer, { fillImages } from './ressources'
+import currentReducer from './current'
 
 export const store = configureStore({
-    reducer: ressourceReducer,
+    reducer: combineReducers({ressources: ressourceReducer, current: currentReducer}),
     devTools: true
 })
 
