@@ -45,11 +45,18 @@ const MemeForm = (props) => {
           <h2>Image</h2>
         </label>
         <br />
-        <select name="imageId" id="imageId" value={props.meme.imageId} onChange={manageStringChangeEvent}>
-          <option value="-1"></option>
-          {props.images.map((img, position) => 
-            <option key={position} value={img.id}>{img.titre}</option>
-          )}
+        <select
+          name="imageId"
+          id="imageId"
+          value={props.meme.imageId}
+          onChange={manageNumberChangeEvent}
+        >
+          <option value="-1">No image</option>
+          {props.images.map((img, position) => (
+            <option key={position} value={img.id}>
+              {img.titre}
+            </option>
+          ))}
         </select>
         <hr />
         <label htmlFor="text">
@@ -135,7 +142,10 @@ const MemeForm = (props) => {
           type="checkbox"
           checked={props.meme.underline}
           onChange={(evt) => {
-            props.onMemeChange({ ...props.meme, underline: evt.target.checked });
+            props.onMemeChange({
+              ...props.meme,
+              underline: evt.target.checked,
+            });
           }}
         />
         &nbsp;
@@ -201,8 +211,29 @@ const MemeForm = (props) => {
 
 MemeForm.propTypes = {
   meme: PropTypes.object.isRequired, // shape todo
+  // meme: PropTypes.shape({}).isRequired, // shape todo
+  // id?: number;
+  // titre: string;
+  // text: string;
+  // x: number;
+  // y: number;
+  // fontWeight: string;
+  // fontSize: number;
+  // underline: boolean;
+  // italic: boolean;
+  // imageId: number;
+  // color: string;
+  // frameSizeX: number;
+  // frameSizeY: number;
   onMemeChange: PropTypes.func.isRequired,
-  images: PropTypes.array.isRequired,
+  images: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    url: PropTypes.string,
+    w: PropTypes.number,
+    h: PropTypes.number,
+    name: PropTypes.string,
+  }))
+  .isRequired,
 };
 MemeForm.defaultProps = {};
 

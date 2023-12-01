@@ -13,9 +13,7 @@ const App = () => {
   const [current, setCurrent] = useState(emptyMeme);
   const [images, setImages] = useState([]);
   useEffect(() => {
-    fetch(`${REST_ADDR}${RESSOURCES_NAME.images}`).then(resp => {
-      resp.json()
-    }).then(arr => setImages(arr));
+    fetch(`${REST_ADDR}${RESSOURCES_NAME.images}`).then(resp => {return resp.json()}).then(arr => setImages(arr));
   }, [])
   return (
     <div className="App" data-testid="App">
@@ -23,7 +21,7 @@ const App = () => {
         <Header />
         <Navbar />
         <FlexWGrow1>
-          <MemeSvgViewer meme={current} />
+          <MemeSvgViewer meme={current} image={images.find(img => img.id === current.imageId)}/>
           <MemeForm meme={current} onMemeChange={ meme => {
             setCurrent(meme)
           }}

@@ -1,1 +1,6 @@
-.MemeSvgViewer {}
+.MemeSvgViewer {
+    text-align: center;
+}
+.MemeSvgViewer {
+    max-height: 80vh;
+}
