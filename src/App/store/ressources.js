@@ -27,6 +27,14 @@ const ressources = createSlice({
       s.memes.splice(0);
       s.memes.push(...a.payload.memes);
     })
+    builder.addCase('current/save/fulfilled', (s, a) => {
+      const position = s.memes.findIndex(m => m.id === a.payload.id);
+      if (position >= 0) {
+        s.memes[position]=a.payload;
+      } else {
+        s.memes.push(a.payload);
+      }
+    })
   }
 });
 
