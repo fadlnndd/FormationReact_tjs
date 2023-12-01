@@ -4,7 +4,8 @@ import Header from "./components/uis/Header/Header";
 import Navbar from "./components/uis/Navbar/Navbar";
 import FlexHGrow3 from "./components/layouts/FlexHGrow3/FlexHGrow3";
 import FlexWGrow1 from "./components/layouts/FlexWGrow1/FlexWGrow1";
-import MemeSvgViewer from "./components/uis/MemeSvgViewer/MemeSvgViewer";
+// import MemeSvgViewer from "./components/uis/MemeSvgViewer/MemeSvgViewer";
+import MemeSvgViewer from "./components/uis/MemeSvgViewer/MemeSvgViewer.stored";
 import { MemeFormHookConnected } from "./components/functionnal/MemeForm/MemeForm";
 import {emptyMeme} from 'orsys-tjs-meme'
 import { RESSOURCES_NAME, REST_ADDR } from "./config/config";
@@ -22,7 +23,8 @@ const App = () => {
         <Header />
         <Navbar />
         <FlexWGrow1>
-          <MemeSvgViewer meme={current} image={images.find(img => img.id === current.imageId)}/>
+          {/* <MemeSvgViewer meme={current} image={images.find(img => img.id === current.imageId)}/> */}
+          <MemeSvgViewer/>
           <MemeFormHookConnected/>
         </FlexWGrow1>
         <Footer />
