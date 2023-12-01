@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import ressourceReducer, { fillImages } from './ressources'
+import ressourceReducer, { fillImages, loadImages } from './ressources'
 import currentReducer from './current'
 
 export const store = configureStore({
@@ -12,6 +12,7 @@ console.log('chargement du store')
 console.log(store.getState())
 // console.log(fillImages([{ id: 0 }, { id: 1 }]))
 
+store.dispatch(loadImages())
 // store.dispatch({ type: 'ressources/fillImages', payload: [{ id: 0 }] })
 // store.dispatch(fillImages([{ id: 0 }]))
 // console.log(store.getState())

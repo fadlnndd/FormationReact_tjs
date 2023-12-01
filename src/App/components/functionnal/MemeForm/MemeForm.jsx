@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./MemeForm.module.css";
 import Button from "../../uis/Button/Button";
 import { useSelector, useDispatch } from 'react-redux'
-import { update } from "../../../store/current";
+import { save, update } from "../../../store/current";
 
 let initialMeme = {};
 const MemeForm = (props) => {
@@ -26,6 +26,9 @@ const MemeForm = (props) => {
       <form
         onSubmit={(evt) => {
           evt.preventDefault();
+          if (props.onMemeSubmit) {
+            props.onMemeSubmit(props.meme);
+          }
         }}
         onReset={(evt) => {
           evt.preventDefault();
@@ -229,6 +232,7 @@ MemeForm.propTypes = {
   //   frameSizeY: PropTypes.number,
   // }).isRequired, // shape todo
   onMemeChange: PropTypes.func.isRequired,
+  onMemeSubmit: PropTypes.func,
   images: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     url: PropTypes.string,
@@ -252,6 +256,7 @@ export const MemeFormHookConnected = (props) => {
     images={images}
     meme={current}
     onMemeChange={(meme) => dispatch(update(meme))}
+    onMemeSubmit={(meme) => dispatch(save(meme))}
     />
   );
 };
