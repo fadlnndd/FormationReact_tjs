@@ -30,11 +30,11 @@ MemeSvgViewer.propTypes = {
   meme: PropTypes.object.isRequired,
   image: PropTypes.shape({
     id: PropTypes.number.isRequired,
-    url: PropTypes.string,
-    w: PropTypes.number,
-    h: PropTypes.number,
+    url: PropTypes.string.isRequired,
+    w: PropTypes.number.isRequired,
+    h: PropTypes.number.isRequired,
     name: PropTypes.string,
-  }).isRequired
+  })
 };
 MemeSvgViewer.defaultProps = {};
 

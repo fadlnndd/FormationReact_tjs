@@ -3,7 +3,7 @@ import styles from "./Button.module.css";
 import PropTypes from "prop-types";
 
 function Button(props) {
-  console.log(props);
+  // console.log(props);
   const [isClicked, setIsClicked] = useState({
     clickedState: false,
     info2: "coucou",
